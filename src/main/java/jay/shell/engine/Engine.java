@@ -3,6 +3,7 @@ package jay.shell.engine;
 public class Engine {
 
      /*
+     @chris
      must be parsed into an array (without whitespace)
      (
         s = "this is an test\n"
