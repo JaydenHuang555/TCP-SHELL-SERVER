@@ -4,7 +4,7 @@ public class Constants {
 
     public final static int PORT = 8080;
 
-    public static class WriterConstants {
+    public static class InputOutputConstants {
         public final static char FLAG_CHAR = 'c';
         public final static char FLAG_STRING = 's';
 

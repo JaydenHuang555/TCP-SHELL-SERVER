@@ -5,7 +5,7 @@ import jay.util.Builder;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import jay.shell.server.Constants.WriterConstants;
+import jay.shell.server.Constants.InputOutputConstants;
 
 public class Client extends Thread {
     private final Socket socket;
@@ -28,9 +28,9 @@ public class Client extends Thread {
                 case '%':
                     c = format.charAt(++i);
                     switch(c){
-                        case WriterConstants.FLAG_CHAR:
+                        case InputOutputConstants.FLAG_CHAR:
                             builder.append((char) args[ai++]);
-                        case WriterConstants.FLAG_STRING:
+                        case InputOutputConstants.FLAG_STRING:
                             builder.append((String) args[ai++]);
                             break;
                         default: throw new Exception("invalid format flag");
@@ -42,6 +42,13 @@ public class Client extends Thread {
         }
     }
 
+    public String read() throws Exception {
+        int c;
+        Builder builder = new Builder();
+        while((c = reader.read()) != InputOutputConstants.END_FLAG) builder.append((char)c);
+        return builder.toString();
+    }
+
     @Override
     public void run(){
         while(true){
@@ -49,9 +56,9 @@ public class Client extends Thread {
                 Builder builder = new Builder();
                 char buff[] = new char[128];
                 Thread.sleep(1000);
-                if(reader.read() == WriterConstants.START_FLAG) {
-                    int c;
-                    while((c = reader.read()) != WriterConstants.END_FLAG) builder.append((char)c);
+                if(reader.read() == InputOutputConstants.START_FLAG) {
+                    String recieved = read();
+
 
                 }
 
