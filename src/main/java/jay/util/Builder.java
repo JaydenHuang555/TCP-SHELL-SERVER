@@ -38,4 +38,13 @@ public class Builder {
         return String.valueOf(dfs);
     }
 
+    @Override
+    public boolean equals(Object o){
+        if(!(o instanceof Builder) || (((Builder) o).size) != this.size) return false;
+        Builder other = (Builder) o;
+        for(int i = 0; i < other.getSize(); i++)
+            if(other.buffer[i] != this.buffer[i]) return false;
+        return true;
+    }
+
 }

@@ -1,6 +1,8 @@
 package jay.util.collection.stack;
-
-public class Node {
+/*
+only meant to be used in this package
+ */
+class Node {
 
     Object val;
     Node prev, next;

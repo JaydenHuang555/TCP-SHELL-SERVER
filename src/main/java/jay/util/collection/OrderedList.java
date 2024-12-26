@@ -1,6 +1,7 @@
 package jay.util.collection;
 
-import com.sun.istack.internal.NotNull;
+
+import org.jetbrains.annotations.NotNull;
 
 public class OrderedList<T> {
 
@@ -36,9 +37,9 @@ public class OrderedList<T> {
 
     @Override
     public boolean equals(@NotNull Object o){
-        if(!(o instanceof OrderedList<?>)) return false;
+        if(!(o instanceof OrderedList<?>) || ((OrderedList<?>)o).size != this.size) return false;
         OrderedList<?> other = (OrderedList<?>) o;
-        for(int i = 0; i < other.size; i++) if(other.get(i).hashCode() == this.get(i).hashCode()) return true;
+        for(int i = 0; i < other.size; i++) if(other.get(i).hashCode() != this.get(i).hashCode()) return false;
         return false;
     }
 
