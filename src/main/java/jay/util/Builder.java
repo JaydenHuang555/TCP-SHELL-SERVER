@@ -19,6 +19,10 @@ public class Builder {
         }
     }
 
+    public void append(final String cc){
+        for(int i = 0; i < cc.length(); i++) append(cc.charAt(i));
+    }
+
     public int getSize(){
         return size;
     }
