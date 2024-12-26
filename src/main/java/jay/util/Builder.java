@@ -2,10 +2,8 @@ package jay.util;
 
 public class Builder {
 
-
     private char buffer[];
     private int size;
-
 
     public Builder(){
         this.size = 0;
